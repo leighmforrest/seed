@@ -1,8 +1,10 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import TodosPage from "./pages/TodosPage";
-import BaseLayout from "./components/BaseLayout";
-import TodoPage from "./pages/TodoPage";
+import BaseLayout from "@/components/BaseLayout";
+import TodosPage from "@/pages/TodosPage";
+import TodoPage from "@/pages/TodoPage";
+import NotFound from "@/pages/NotFound";
+
 
 const App = () => {
   return (
@@ -12,6 +14,7 @@ const App = () => {
         <Route index element={<TodosPage />} />
         <Route path=":id" element={<TodoPage />} />
       </Route>
+      <Route path="*" element={<NotFound />} />
     </Routes>
     </BrowserRouter>
   )
