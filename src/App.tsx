@@ -1,22 +1,20 @@
-import useTodos from "@/queries/useTodos";
-import type { Todo } from "@/types/tanstack";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+import TodosPage from "./pages/TodosPage";
+import BaseLayout from "./components/BaseLayout";
+import TodoPage from "./pages/TodoPage";
 
 const App = () => {
-  const { data, isLoading, isError } = useTodos();
-
-  if (isLoading) return <div>Loading...</div>;
-
-  if (isError) return <div>Could not load</div>;
-
   return (
-    <div>
-      <ul>
-        {data.map((todo: Todo) => (
-          <li key={todo.id}>{todo.title}</li>
-        ))}
-      </ul>
-    </div>
-  );
-};
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<BaseLayout />}>
+        <Route index element={<TodosPage />} />
+        <Route path=":id" element={<TodoPage />} />
+      </Route>
+    </Routes>
+    </BrowserRouter>
+  )
+}
 
 export default App;
