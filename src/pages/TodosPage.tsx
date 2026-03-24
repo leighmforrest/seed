@@ -3,7 +3,7 @@ import useTodos from "@/queries/useTodos";
 import type { Todo } from "@/types/tanstack";
 
 const TodosPage = () => {
-  const { data, isLoading, isError } = useTodos();
+  const { data: todos, isLoading, isError } = useTodos();
 
   if (isLoading) return <div>Loading...</div>;
 
@@ -12,7 +12,7 @@ const TodosPage = () => {
   return (
     <div>
       <ul>
-        {data.map((todo: Todo) => (
+        {todos && todos.map((todo: Todo) => (
           <li key={todo.id}>
             <Link to={`${todo.id}`}>{todo.title}</Link>
           </li>
