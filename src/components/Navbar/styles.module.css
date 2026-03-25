@@ -1,3 +1,8 @@
 nav {
-    background-color: green;
+    display: flex;
+    padding: 0 1rem;
+    font-size: 3rem;
+    background-color: rgba(227, 66, 52, .8);
+    height: var(--height-header);
+    align-items: center;
 }

@@ -1,8 +1,11 @@
+import { Link } from "react-router-dom";
 import type { TodoDetailProps } from "@/types";
+
+import styles from "./styles.module.css";
 
 const TodoDetail = ({ todo }: TodoDetailProps) => {
   return (
-    <>
+    <div className={styles.todoDetail}>
       {todo ? (
         <>
           <p>ID: {todo.id}</p>
@@ -12,7 +15,8 @@ const TodoDetail = ({ todo }: TodoDetailProps) => {
       ) : (
         <p>The todo could not be found.</p>
       )}
-    </>
+      <Link to="/">Go Back</Link>
+    </div>
   );
 };
 

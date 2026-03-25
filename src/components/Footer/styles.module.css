@@ -1,6 +1,7 @@
 footer {
-    background-color: green;
+    background-color: rgba(227, 66, 52, .8);;
     display: flex;
-    text-align: center;
+    align-items: center;
     justify-content: center;
+    min-height: var(--height-footer);
 }

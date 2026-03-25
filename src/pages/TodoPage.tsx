@@ -13,7 +13,6 @@ const TodoPage = () => {
   return (
     <div>
       <TodoDetail todo={todo} />
-      <Link to="/">Go Back</Link>
     </div>
   );
 };

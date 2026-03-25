@@ -1,0 +1,24 @@
+.todoList {
+    background-color: whitesmoke;
+    border-radius: 2rem;
+    list-style: none;
+    line-height: 3rem;
+    padding: 1rem;
+}
+
+.todoList li {
+    border-bottom: 1px solid gray;
+}
+
+.todoList li:last-child {
+    border-bottom: none;
+}
+
+.todoLink {
+    text-decoration: none;
+    color: black;
+}
+
+.todoLink:hover {
+    color: darkgray;
+}
