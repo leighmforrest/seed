@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom";
+import TodoList from "@/components/TodoList";
 import useTodos from "@/queries/useTodos";
-import type { Todo } from "@/types/tanstack";
 
 const TodosPage = () => {
   const { data: todos, isLoading, isError } = useTodos();
@@ -10,15 +9,9 @@ const TodosPage = () => {
   if (isError) return <div>Could not load</div>;
 
   return (
-    <div>
-      <ul>
-        {todos && todos.map((todo: Todo) => (
-          <li key={todo.id}>
-            <Link to={`${todo.id}`}>{todo.title}</Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      <TodoList todos={todos} />
+    </>
   );
 };
 
