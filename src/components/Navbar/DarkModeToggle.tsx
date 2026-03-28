@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { type Theme } from "@/types/theme";
+import { MdDarkMode, MdLightMode } from "react-icons/md";
 
 import styles from "./styles.module.css";
-
 
 const DarkModeToggle = () => {
   const [theme, setTheme] = useState<Theme>("light");
@@ -24,10 +24,16 @@ const DarkModeToggle = () => {
     localStorage.setItem("theme", next);
   };
   return (
-    <button onClick={toggleTheme} aria-label="Toggle dark mode"
-    className={styles.darkModeButton}
+    <button
+      onClick={toggleTheme}
+      aria-label="Toggle dark mode"
+      className={styles.darkModeButton}
     >
-      {theme === "dark" ? "🌙" : "☀️"}
+      {theme === "dark" ? (
+        <MdDarkMode className={styles.darkModeIcon} />
+      ) : (
+        <MdLightMode className={styles.darkModeIcon} />
+      )}
     </button>
   );
 };
