@@ -6,15 +6,16 @@ import { THEMES, type Theme } from "@/types/theme";
 import { LocationDisplay } from "../../../tests/helpers";
 
 describe("Navbar", () => {
-  const renderComponent = () => {
+  const renderComponent = (initialEntry = "/") => {
     return {
       ...render(
-        <MemoryRouter initialEntries={["/"]}>
+        <MemoryRouter initialEntries={[initialEntry]}>
           <Navbar />
           <LocationDisplay />
         </MemoryRouter>,
       ),
       user: userEvent.setup(),
+      brand: screen.getByTestId("brand"),
       hamburger: screen.getByTestId("hamburgerButton"),
       menu: screen.getByRole("list"),
       darkModeToggle: screen.getByTestId("darkModeToggle"),
@@ -22,9 +23,10 @@ describe("Navbar", () => {
   };
 
   it("renders", async () => {
-    const { hamburger } = renderComponent();
+    const { hamburger, brand } = renderComponent();
 
     expect(hamburger).toBeInTheDocument();
+    expect(brand).toBeInTheDocument();
     expect(screen.getByText(/seed project/i)).toBeInTheDocument();
   });
 
@@ -38,6 +40,14 @@ describe("Navbar", () => {
       expect(icon).toBeInTheDocument();
     },
   );
+
+  it("navigate to '/' when brand link is clicked",async ()=> {
+    const { user, brand } = renderComponent("/about");
+
+    await user.click(brand);
+
+    expect(screen.getByTestId("location")).toHaveTextContent("/");
+  })
 
   it("displays light mode with no storage", () => {
     renderComponent();
@@ -62,17 +72,20 @@ describe("Navbar", () => {
     expect(menu).not.toHaveClass("open");
   });
 
-  test.each([/about/i, /home/i])("closes menu after clicking on %s", async (label) => {
-    const { user, hamburger, menu } = renderComponent();
+  test.each([/about/i, /home/i])(
+    "closes menu after clicking on %s",
+    async (label) => {
+      const { user, hamburger, menu } = renderComponent();
 
-    await user.click(hamburger);
-    expect(menu).toHaveClass("open");
+      await user.click(hamburger);
+      expect(menu).toHaveClass("open");
 
-    const link = screen.getByRole("link", { name: label });
-    await user.click(link);
+      const link = screen.getByRole("link", { name: label });
+      await user.click(link);
 
-    expect(menu).not.toHaveClass("open");
-  });
+      expect(menu).not.toHaveClass("open");
+    },
+  );
 
   test.each([
     { path: "/about", label: /about/i },

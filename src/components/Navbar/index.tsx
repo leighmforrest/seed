@@ -20,7 +20,7 @@ const Navbar = () => {
   return (
     <header>
       <nav className={styles.nav}>
-        <div className={styles.brand}>
+        <div className={styles.brand} data-testid="brand">
           <Link to="/" className={styles.brandLink}>
             Seed Project
           </Link>
