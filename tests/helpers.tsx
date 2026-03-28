@@ -1,7 +1,6 @@
 import { useLocation } from "react-router-dom";
 /**
- * Component to display current location in tests.
- * @returns 
+ * Component to display navigated to location in tests.
  */
 export const LocationDisplay = () => {
   const location = useLocation();
