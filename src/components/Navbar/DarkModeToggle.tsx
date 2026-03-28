@@ -1,20 +1,19 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { type Theme } from "@/types/theme";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 
 import styles from "./styles.module.css";
 
+const getInitialTheme = (): Theme => {
+  const saved = localStorage.getItem("theme");
+  return saved === "dark" ? "dark" : "light";
+};
+
 const DarkModeToggle = () => {
-  const [theme, setTheme] = useState<Theme>("light");
+  const initialTheme = getInitialTheme();
+  document.documentElement.setAttribute("data-theme", initialTheme);
 
-  useEffect(() => {
-    const saved = localStorage.getItem("theme") as Theme | null;
-
-    if (saved === "light" || saved === "dark") {
-      setTheme(saved);
-      document.documentElement.setAttribute("data-theme", saved);
-    }
-  }, []);
+  const [theme, setTheme] = useState<Theme>(initialTheme);
 
   const toggleTheme = () => {
     const next: Theme = theme === "dark" ? "light" : "dark";
@@ -23,6 +22,7 @@ const DarkModeToggle = () => {
     document.documentElement.setAttribute("data-theme", next);
     localStorage.setItem("theme", next);
   };
+
   return (
     <button
       onClick={toggleTheme}

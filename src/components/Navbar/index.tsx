@@ -7,9 +7,15 @@ import styles from "./styles.module.css";
 
 const Navbar = () => {
   const [open, setOpen] = useState<boolean>(false);
+  
   const hamburgerClickHandler = () => {
     setOpen((prev) => !prev);
   };
+
+  const linkClickHandler = () => {
+    setOpen(false);
+  }
+
   return (
     <header>
       <nav className={styles.nav}>
@@ -24,7 +30,7 @@ const Navbar = () => {
               <NavLink
                 to="/"
                 className={styles.menuLink}
-                onClick={() => setOpen(false)}
+                onClick={linkClickHandler}
               >
                 Home
               </NavLink>

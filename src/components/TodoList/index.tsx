@@ -10,6 +10,7 @@ const TodoList = ({ todos }: TodoListProps) => {
   const queryClient = useQueryClient();
 
   return (
+    <div className={styles.contentContainer}>
     <ul className={styles.todoList}>
       {todos ? (
         todos.map((todo) => (
@@ -26,6 +27,7 @@ const TodoList = ({ todos }: TodoListProps) => {
         <li>The todo could not be found.</li>
       )}
     </ul>
+    </div>
   );
 };
 

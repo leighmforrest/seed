@@ -14,8 +14,12 @@ nav {
 }
 
 .brandLink {
-    text-decoration: none;
+    /* text-decoration: none; */
     color: var(--navbar-text);
+}
+
+.brandLink:hover {
+    color: honeydew;
 }
 
 .menu {
@@ -48,9 +52,18 @@ nav {
     gap: 1rem;
 }
 
+.menu li {
+    height: 3rem;
+}
+
 .menuLink {
     text-decoration: none;
     color: var(--navbar-text);
+}
+
+.menuLink:hover {
+    color: var(--navbar-text);
+    font-size: 3.2rem;
 }
 
 .hamburger {
@@ -94,6 +107,10 @@ nav {
     color: var(--navbar-text)
 }
 
+.darkModeIcon:hover {
+    font-size: 3rem;
+}
+
 
 @media (min-width: 768px) {
     .menu {
@@ -118,6 +135,7 @@ nav {
     .menu li {
         border: none;
         line-height: normal;
+        min-width: 3.2rem;
     }
 
     .hamburger {

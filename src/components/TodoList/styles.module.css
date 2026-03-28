@@ -1,3 +1,7 @@
+.contentContainer {
+    width: 100%;
+}
+
 .todoList {
     background-color: var(--content-background-color);
     box-shadow: 0 .4rem 1.2rem rgba(0, 0, 0, .1);
@@ -9,8 +13,17 @@
 
 .todoList li {
     border-bottom: 1px solid gray;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .todoList li:last-child {
     border-bottom: none;
+}
+
+@media (min-width: 768px) {
+    .contentContainer {
+        max-width: 80%;
+    }
 }
