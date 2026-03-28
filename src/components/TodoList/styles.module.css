@@ -1,5 +1,5 @@
 .todoList {
-    background-color: whitesmoke;
+    background-color: var(--content-background-color);
     box-shadow: 0 .4rem 1.2rem rgba(0, 0, 0, .1);
     border-radius: 2rem;
     list-style: none;
@@ -13,13 +13,4 @@
 
 .todoList li:last-child {
     border-bottom: none;
-}
-
-.todoLink {
-    text-decoration: none;
-    color: black;
-}
-
-.todoLink:hover {
-    color: darkgray;
 }

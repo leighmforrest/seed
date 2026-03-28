@@ -15,7 +15,6 @@ const TodoList = ({ todos }: TodoListProps) => {
         todos.map((todo) => (
           <li key={todo.id}>
             <Link to={`${todo.id}`} 
-            className={styles.todoLink}
             onMouseEnter={()=> queryClient.prefetchQuery({
               queryKey: ["todo", todo.id],
               queryFn: () => getTodo(`${todo.id}`),

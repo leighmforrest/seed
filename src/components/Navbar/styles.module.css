@@ -2,7 +2,7 @@ nav {
     display: flex;
     padding: 0 1rem;
     font-size: 3rem;
-    background-color: rgba(227, 66, 52, .8);
+    background-color: var(--navbar-background);
     height: var(--height-header);
     align-items: center;
     justify-content: space-between;
@@ -15,7 +15,7 @@ nav {
 
 .brandLink {
     text-decoration: none;
-    color: greenyellow;
+    color: var(--navbar-text);
 }
 
 .menu {
@@ -23,7 +23,7 @@ nav {
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: aquamarine;
+    background-color: var(--navbar-menu-background);
     padding: 1rem;
 
     transform: translateY(-10px);
@@ -42,13 +42,15 @@ nav {
 
 .menu ul {
     display: flex;
+    flex-direction: column;
     list-style: none;
+    align-items: center;
     gap: 1rem;
 }
 
 .menuLink {
     text-decoration: none;
-    color: violet;
+    color: var(--navbar-text);
 }
 
 .hamburger {
@@ -65,7 +67,7 @@ nav {
 
 .bar {
     height: .4rem;
-    background-color: black;
+    background-color: var(--navbar-text);
     border-radius: .2rem;
     transition: all .5s ease;
 }
@@ -82,22 +84,39 @@ nav {
     transform: rotate(-45deg) translate(.8rem, -.8rem);
 }
 
+.darkModeButton {
+    background: none;
+    border: none;
+    font-size: 2.5rem;
+}
+
 
 @media (min-width: 768px) {
     .menu {
-        position: static;        /* 🔥 no dropdown */
-        display: block;          /* always visible */
+        position: static;
+        display: block;
         width: auto;
         background-color: transparent;
+
+        /* 🔥 RESET mobile animation */
+        transform: none;
+        opacity: 1;
+        pointer-events: auto;
     }
 
     .menu ul {
-        display: flex;           /* horizontal layout */
+        display: flex;
+        flex-direction: row;
         gap: 2rem;
         align-items: center;
     }
 
+    .menu li {
+        border: none;
+        line-height: normal;
+    }
+
     .hamburger {
-        display: none;           /* hide burger */
+        display: none;
     }
 }
