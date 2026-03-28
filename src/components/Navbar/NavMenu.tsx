@@ -12,7 +12,7 @@ interface NavMenuProps {
 const NavMenu = ({ onLinkClick, open }: NavMenuProps) => {
   return (
     <div className={`${styles.menu} ${open ? styles.open : ""}`}>
-      <ul>
+      <ul className={`${open ? "open" : ""}`}>
         <li>
           <NavLink to="/" className={styles.menuLink} onClick={onLinkClick}>
             Home

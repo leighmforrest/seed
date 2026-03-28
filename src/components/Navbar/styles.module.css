@@ -1,143 +1,156 @@
 nav {
-    display: flex;
-    padding: 0 1rem;
-    font-size: 3rem;
-    background-color: var(--navbar-background);
-    height: var(--height-header);
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
+  display: flex;
+  padding: 0 1rem;
+  font-size: 3rem;
+  background-color: var(--navbar-background);
+  height: var(--height-header);
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
 }
 
+/* ---------- BRAND ---------- */
+
 .brand {
-    white-space: nowrap;
+  white-space: nowrap;
 }
 
 .brandLink {
-    /* text-decoration: none; */
-    color: var(--navbar-text);
+  color: var(--navbar-text);
+  text-decoration: none;
 }
 
 .brandLink:hover {
-    color: honeydew;
+  color: var(--navbar-text-hover);
 }
+
+/* ---------- MENU (MOBILE FIRST) ---------- */
 
 .menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: var(--navbar-menu-background);
-    padding: 1rem;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: var(--navbar-menu-background);
+  padding: 1rem;
 
-    transform: translateY(-10px);
-    opacity: 0;
+  /* hidden state */
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
 
-    pointer-events: none;
+  transition: transform 0.25s ease, opacity 0.25s ease;
 
-    transition: transform 0.25s ease, opacity 0.25s ease;
+  z-index: 1000; /* 🔥 ensures it overlays properly */
 }
 
-.open {
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: auto;
+.menu.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
+
+/* ---------- MENU CONTENT ---------- */
 
 .menu ul {
-    display: flex;
-    flex-direction: column;
-    list-style: none;
-    align-items: center;
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  align-items: center;
+  gap: 1rem;
 }
 
 .menu li {
-    height: 3rem;
+  height: 3rem;
 }
 
 .menuLink {
-    text-decoration: none;
-    color: var(--navbar-text);
+  text-decoration: none;
+  color: var(--navbar-text);
 }
 
 .menuLink:hover {
-    color: var(--navbar-text-hover);
+  color: var(--navbar-text-hover);
 }
 
+/* ---------- HAMBURGER ---------- */
+
 .hamburger {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 4rem;
-    height: 2.5rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 4rem;
+  height: 2.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 }
 
 .bar {
-    height: .4rem;
-    background-color: var(--navbar-text);
-    border-radius: .2rem;
-    transition: all .5s ease;
+  height: 0.4rem;
+  background-color: var(--navbar-text);
+  border-radius: 0.2rem;
+  transition: all 0.5s ease;
 }
 
+/* animated X */
+
 .openHamburger .bar:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
+  transform: rotate(45deg) translate(6px, 6px);
 }
 
 .openHamburger .bar:nth-child(2) {
-    opacity: 0;
+  opacity: 0;
 }
 
 .openHamburger .bar:nth-child(3) {
-    transform: rotate(-45deg) translate(.8rem, -.8rem);
+  transform: rotate(-45deg) translate(0.8rem, -0.8rem);
 }
 
+/* ---------- DARK MODE BUTTON ---------- */
+
 .darkModeButton {
-    background: none;
-    border: none;
-    font-size: 2.5rem;
+  background: none;
+  border: none;
+  font-size: 2.5rem;
+  cursor: pointer;
 }
 
 .darkModeIcon {
-    color: var(--navbar-text)
+  color: var(--navbar-text);
 }
 
 .darkModeIcon:hover {
-    color: var(--navbar-text-hover)
+  color: var(--navbar-text-hover);
 }
 
+/* ---------- DESKTOP OVERRIDE ---------- */
 
 @media (min-width: 768px) {
-    .menu {
-        position: static;
-        display: block;
-        width: auto;
-        background-color: transparent;
+  .menu {
+    position: static;
+    width: auto;
+    background-color: transparent;
 
-        /* 🔥 RESET mobile animation */
-        transform: none;
-        opacity: 1;
-        pointer-events: auto;
-    }
+    /* always visible on desktop */
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
 
-    .menu ul {
-        display: flex;
-        flex-direction: row;
-        gap: 2rem;
-        align-items: center;
-    }
+  .menu ul {
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+  }
 
-    .menu li {
-        border: none;
-        line-height: normal;
-        min-width: 3.2rem;
-    }
+  .menu li {
+    height: auto;
+    min-width: 3.2rem;
+  }
 
-    .hamburger {
-        display: none;
-    }
+  .hamburger {
+    display: none;
+  }
 }

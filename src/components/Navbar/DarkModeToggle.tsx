@@ -28,11 +28,12 @@ const DarkModeToggle = () => {
       onClick={toggleTheme}
       aria-label="Toggle dark mode"
       className={styles.darkModeButton}
+      data-testid="darkModeToggle"
     >
       {theme === "dark" ? (
-        <MdDarkMode className={styles.darkModeIcon} />
+        <MdDarkMode className={styles.darkModeIcon} data-testid="darkModeIcon" />
       ) : (
-        <MdLightMode className={styles.darkModeIcon} />
+        <MdLightMode className={styles.darkModeIcon} data-testid="lightModeIcon" />
       )}
     </button>
   );
