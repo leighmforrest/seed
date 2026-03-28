@@ -1,0 +1,17 @@
+.contentContainer {
+    background-color: var(--content-background-color);
+    color: var(--content-color);
+    width: 100%;
+    padding: 3rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    .contentContainer {
+        width: 80%;
+    }
+}

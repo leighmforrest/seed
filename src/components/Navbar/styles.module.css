@@ -62,8 +62,7 @@ nav {
 }
 
 .menuLink:hover {
-    color: var(--navbar-text);
-    font-size: 3.2rem;
+    color: var(--navbar-text-hover);
 }
 
 .hamburger {
@@ -108,7 +107,7 @@ nav {
 }
 
 .darkModeIcon:hover {
-    font-size: 3rem;
+    color: var(--navbar-text-hover)
 }
 
 

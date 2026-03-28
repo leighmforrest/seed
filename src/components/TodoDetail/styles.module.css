@@ -1,6 +1,7 @@
 .todoDetail {
     display: flex;
     flex-direction: column;
+    min-width: 90vw;
     gap: 1rem;
     background-color: var(--content-background-color);
     border-radius: 2rem;

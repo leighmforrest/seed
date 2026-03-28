@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import DarkModeToggle from "./DarkModeToggle";
+import NavMenu from "./NavMenu";
+import HamburgerButton from "./HamburgerButton";
 
 import styles from "./styles.module.css";
 
@@ -24,30 +25,8 @@ const Navbar = () => {
             Seed Project
           </Link>
         </div>
-        <div className={`${styles.menu} ${open ? styles.open : ""}`}>
-          <ul>
-            <li>
-              <NavLink
-                to="/"
-                className={styles.menuLink}
-                onClick={linkClickHandler}
-              >
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <DarkModeToggle />
-            </li>
-          </ul>
-        </div>
-        <button
-          onClick={hamburgerClickHandler}
-          className={`${styles.hamburger} ${open && styles.openHamburger}`}
-        >
-          <span className={styles.bar}></span>
-          <span className={styles.bar}></span>
-          <span className={styles.bar}></span>
-        </button>
+        <NavMenu onLinkClick={linkClickHandler} open={open} />
+        <HamburgerButton onHamburgerClick={hamburgerClickHandler} open={open} />
       </nav>
     </header>
   );

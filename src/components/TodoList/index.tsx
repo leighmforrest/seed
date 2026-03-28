@@ -11,22 +11,27 @@ const TodoList = ({ todos }: TodoListProps) => {
 
   return (
     <div className={styles.contentContainer}>
-    <ul className={styles.todoList}>
-      {todos ? (
-        todos.map((todo) => (
-          <li key={todo.id}>
-            <Link to={`${todo.id}`} 
-            onMouseEnter={()=> queryClient.prefetchQuery({
-              queryKey: ["todo", todo.id],
-              queryFn: () => getTodo(`${todo.id}`),
-            })}
-            >{todo.title}</Link>
-          </li>
-        ))
-      ) : (
-        <li>The todo could not be found.</li>
-      )}
-    </ul>
+      <ul className={styles.todoList}>
+        {todos ? (
+          todos.map((todo) => (
+            <li key={todo.id}>
+              <Link
+                to={`${todo.id}`}
+                onMouseEnter={() =>
+                  queryClient.prefetchQuery({
+                    queryKey: ["todo", todo.id],
+                    queryFn: () => getTodo(`${todo.id}`),
+                  })
+                }
+              >
+                {todo.title}
+              </Link>
+            </li>
+          ))
+        ) : (
+          <li>The todo could not be found.</li>
+        )}
+      </ul>
     </div>
   );
 };

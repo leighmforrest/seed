@@ -6,6 +6,7 @@
     --color-background: white;
     --navbar-background: rgba(227, 66, 52, .8);
     --navbar-text: greenyellow;
+    --navbar-text-hover: honeydew;
     --navbar-menu-background: rgba(227, 66, 52, 1);
     --navbar-menu-text: greenyellow;
     --main-background-color: cornflowerblue;
@@ -19,6 +20,7 @@
     --link-hover-color: darkgrey;
     --navbar-background: midnightblue;
     --navbar-text: green;
+    --navbar-text-hover: darkolivegreen;
     --navbar-menu-background: midnightblue;
     --navbar-menu-text: green;
     --main-background-color: darkblue;
