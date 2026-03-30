@@ -10,11 +10,11 @@ const TodoList = ({ todos }: TodoListProps) => {
   const queryClient = useQueryClient();
 
   return (
-    <div className={styles.contentContainer}>
+    <div className={styles.contentContainer} data-testid="todo-list">
       <ul className={styles.todoList}>
-        {todos ? (
+        {(todos && (todos.length > 0)) ? (
           todos.map((todo) => (
-            <li key={todo.id}>
+            <li key={todo.id} data-testid="todo-list-item">
               <Link
                 to={`${todo.id}`}
                 onMouseEnter={() =>
@@ -29,7 +29,7 @@ const TodoList = ({ todos }: TodoListProps) => {
             </li>
           ))
         ) : (
-          <li>The todo could not be found.</li>
+          <li>The todos could not be found.</li>
         )}
       </ul>
     </div>
