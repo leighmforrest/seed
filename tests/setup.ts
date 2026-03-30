@@ -5,15 +5,15 @@ import { server } from "./__mocks__/server";
 
 expect.extend(matchers);
 
-beforeAll(()=> server.listen())
+beforeAll(() => server.listen());
 
 beforeEach(() => {
   localStorage.clear(); // start clean for every test
 });
 
-afterEach(()=> {
-    cleanup();
-    server.resetHandlers()
-})
+afterEach(() => {
+  cleanup();
+  server.resetHandlers();
+});
 
-afterAll(()=> server.close())
+afterAll(() => server.close());
