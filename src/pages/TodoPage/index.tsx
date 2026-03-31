@@ -9,7 +9,7 @@ const TodoPage = () => {
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Could not load.</div>;
-
+  
   return (
     <div>
       <TodoDetail todo={todo} />

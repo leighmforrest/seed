@@ -69,9 +69,10 @@ export const handlers = [
   ),
   http.get(`${BASE_URL}/todos/:todoId`, ({ params }) => {
     const { todoId } = params;
+
     HttpResponse.json({
       userId: 1,
-      id: { todoId },
+      id: todoId,
       title: "delectus aut autem",
       completed: false,
     });
