@@ -23,7 +23,7 @@ describe("App", () => {
   );
 
   test.each([
-    { route: ["/"], testId: "todos-page" },
+    { route: ["/"], testId: "todo-list" },
     { route: ["/1"], testId: "todo-detail" },
     { route: ["/about"], testId: "about-page" },
     { route: ["/todos/green"], testId: "not-found" },

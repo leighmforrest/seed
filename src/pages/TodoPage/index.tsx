@@ -11,9 +11,7 @@ const TodoPage = () => {
   if (isError) return <div data-testid="error-message">Could not load.</div>;
   
   return (
-    <div>
       <TodoDetail todo={todo} />
-    </div>
   );
 };
 
