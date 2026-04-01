@@ -2,7 +2,7 @@ import styles from "./styles.module.css";
 
 const AboutContent = () => {
   return (
-    <div className={styles.contentContainer}>
+    <div className={styles.contentContainer} data-testid="about-page">
       <h3>About Us</h3>
       <p>
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic nobis
