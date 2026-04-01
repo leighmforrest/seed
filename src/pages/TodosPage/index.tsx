@@ -9,9 +9,9 @@ const TodosPage = () => {
   if (isError) return <div data-testid="error-message">Could not load</div>;
 
   return (
-    <>
+    <div data-testid="todos-page">
       <TodoList todos={todos} />
-    </>
+    </div>
   );
 };
 

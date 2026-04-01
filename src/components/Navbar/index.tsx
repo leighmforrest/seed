@@ -18,7 +18,7 @@ const Navbar = () => {
   }
 
   return (
-    <header>
+    <header data-testid="header">
       <nav className={styles.nav}>
         <div className={styles.brand} data-testid="brand">
           <Link to="/" className={styles.brandLink}>

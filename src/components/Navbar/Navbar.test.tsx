@@ -1,7 +1,8 @@
+import { MemoryRouter } from "react-router-dom";
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+
 import Navbar from ".";
-import { MemoryRouter } from "react-router-dom";
 import { THEMES, type Theme } from "@/types/theme";
 import { LocationDisplay } from "../../../tests/helpers";
 
@@ -24,7 +25,6 @@ describe("Navbar", () => {
 
   it("renders", async () => {
     const { hamburger, brand } = renderComponent();
-
     expect(hamburger).toBeInTheDocument();
     expect(brand).toBeInTheDocument();
     expect(screen.getByText(/seed project/i)).toBeInTheDocument();
@@ -35,19 +35,18 @@ describe("Navbar", () => {
     async (mode: Theme) => {
       localStorage.setItem("theme", mode);
       renderComponent();
-
       const icon = await screen.findByTestId(`${mode}ModeIcon`);
       expect(icon).toBeInTheDocument();
     },
   );
 
-  it("navigate to '/' when brand link is clicked",async ()=> {
+  it("navigate to '/' when brand link is clicked", async () => {
     const { user, brand } = renderComponent("/about");
 
     await user.click(brand);
 
     expect(screen.getByTestId("location")).toHaveTextContent("/");
-  })
+  });
 
   it("displays light mode with no storage", () => {
     renderComponent();
@@ -98,5 +97,15 @@ describe("Navbar", () => {
     await user.click(link);
 
     expect(screen.getByTestId("location")).toHaveTextContent(path);
+  });
+
+  it("has dark mode enabled", async () => {
+    const { user, darkModeToggle } = renderComponent();
+
+    await user.click(darkModeToggle);
+    expect(document.documentElement).toHaveAttribute("data-theme", "dark");
+
+    await user.click(darkModeToggle);
+    expect(document.documentElement).toHaveAttribute("data-theme", "light");
   });
 });
