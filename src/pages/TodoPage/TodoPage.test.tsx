@@ -73,4 +73,30 @@ describe("TodoPage", () => {
     ).not.toBeInTheDocument();
     expect(within(todoDetail).getByLabelText(/completed/i)).toBeInTheDocument();
   });
+
+  it("shows test error if 500", async () => {
+    server.use(
+      http.get(`${BASE_URL}/todos/:todoId`, () => {
+
+        return HttpResponse.json(null, {status: 500});
+      }),
+    );
+
+    renderComponent(1);
+    const errorMessage = await screen.findByTestId("error-message");
+        expect(errorMessage).toBeInTheDocument();
+  });
+
+  it("shows test error if 500", async () => {
+    server.use(
+      http.get(`${BASE_URL}/todos/:todoId`, () => {
+
+        return HttpResponse.json({});
+      }),
+    );
+
+    renderComponent(1);
+    const errorMessage = await screen.findByText(/the todo could not be found./i);
+        expect(errorMessage).toBeInTheDocument();
+  });
 });

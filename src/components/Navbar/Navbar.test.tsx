@@ -5,6 +5,7 @@ import userEvent from "@testing-library/user-event";
 import Navbar from ".";
 import { THEMES, type Theme } from "@/types/theme";
 import { LocationDisplay } from "../../../tests/helpers";
+import { PROJECT_NAME } from "@/settings";
 
 describe("Navbar", () => {
   const renderComponent = (initialEntry = "/") => {
@@ -27,7 +28,7 @@ describe("Navbar", () => {
     const { hamburger, brand } = renderComponent();
     expect(hamburger).toBeInTheDocument();
     expect(brand).toBeInTheDocument();
-    expect(screen.getByText(/seed project/i)).toBeInTheDocument();
+    expect(screen.getByText(PROJECT_NAME)).toBeInTheDocument();
   });
 
   test.each([THEMES.DARK, THEMES.LIGHT])(

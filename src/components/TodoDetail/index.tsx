@@ -6,7 +6,7 @@ import styles from "./styles.module.css";
 const TodoDetail = ({ todo }: TodoDetailProps) => {
   return (
     <div className={styles.todoDetail} data-testid="todo-detail">
-      {todo ? (
+      {todo && (Object.keys(todo).length > 0) ? (
         <>
           <p>ID: {todo.id}</p>
           <p>Title: {todo.title}</p>

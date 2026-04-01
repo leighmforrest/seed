@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import NavMenu from "./NavMenu";
 import HamburgerButton from "./HamburgerButton";
+import { PROJECT_NAME } from "@/settings";
 
 import styles from "./styles.module.css";
 
@@ -22,7 +23,7 @@ const Navbar = () => {
       <nav className={styles.nav}>
         <div className={styles.brand} data-testid="brand">
           <Link to="/" className={styles.brandLink}>
-            Seed Project
+            {PROJECT_NAME}
           </Link>
         </div>
         <NavMenu onLinkClick={linkClickHandler} open={open} />

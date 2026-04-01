@@ -8,7 +8,7 @@ const TodoPage = () => {
   const { data: todo, isLoading, isError } = useTodo(id ?? "");
 
   if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Could not load.</div>;
+  if (isError) return <div data-testid="error-message">Could not load.</div>;
   
   return (
     <div>
