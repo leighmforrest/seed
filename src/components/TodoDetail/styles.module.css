@@ -8,3 +8,9 @@
     padding: 2rem;
     box-shadow: 0 .4rem 1.2rem rgba(0, 0, 0, .1);
 }
+
+@media (min-width: 768px) {
+    .todoDetail {
+        min-width: 50vw;
+    }
+}
