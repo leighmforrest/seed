@@ -67,9 +67,11 @@ describe("Navbar", () => {
 
     await user.click(hamburger);
     expect(menu).toHaveClass("open");
+    expect(hamburger).toHaveAttribute("aria-expanded", "true")
 
     await user.click(hamburger);
     expect(menu).not.toHaveClass("open");
+    expect(hamburger).toHaveAttribute("aria-expanded", "false")
   });
 
   test.each([/about/i, /home/i])(

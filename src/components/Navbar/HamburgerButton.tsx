@@ -11,6 +11,8 @@ const HamburgerButton = ({ onHamburgerClick, open }: HamburgerButtonProps) => {
       onClick={onHamburgerClick}
       className={`${styles.hamburger} ${open && styles.openHamburger}`}
       aria-label="Hamburger menu toggle"
+      aria-controls="menu"
+      aria-expanded={open ? "true" : "false"}
       data-testid="hamburgerButton"
     >
       <span className={styles.bar}></span>
