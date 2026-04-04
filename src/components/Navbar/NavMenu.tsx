@@ -2,12 +2,9 @@ import { NavLink } from "react-router-dom";
 
 import DarkModeToggle from "./DarkModeToggle";
 
+import type { NavMenuProps } from "@/types";
 import styles from "./styles.module.css";
 
-interface NavMenuProps {
-  onLinkClick: () => void;
-  open: boolean;
-}
 
 const NavMenu = ({ onLinkClick, open }: NavMenuProps) => {
   return (

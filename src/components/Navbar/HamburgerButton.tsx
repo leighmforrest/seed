@@ -1,9 +1,7 @@
+import type { HamburgerButtonProps } from "@/types";
+
 import styles from "./styles.module.css";
 
-interface HamburgerButtonProps {
-  onHamburgerClick: () => void;
-  open: boolean;
-}
 
 const HamburgerButton = ({ onHamburgerClick, open }: HamburgerButtonProps) => {
   return (
