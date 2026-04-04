@@ -67,11 +67,11 @@ describe("Navbar", () => {
 
     await user.click(hamburger);
     expect(menu).toHaveClass("open");
-    expect(hamburger).toHaveAttribute("aria-expanded", "true")
+    expect(hamburger).toHaveAttribute("aria-expanded", "true");
 
     await user.click(hamburger);
     expect(menu).not.toHaveClass("open");
-    expect(hamburger).toHaveAttribute("aria-expanded", "false")
+    expect(hamburger).toHaveAttribute("aria-expanded", "false");
   });
 
   test.each([/about/i, /home/i])(
@@ -103,12 +103,17 @@ describe("Navbar", () => {
   });
 
   it("has dark mode enabled", async () => {
-    const { user, darkModeToggle } = renderComponent();
+    const { user, darkModeToggle, menu, hamburger } = renderComponent();
 
     await user.click(darkModeToggle);
     expect(document.documentElement).toHaveAttribute("data-theme", "dark");
+    expect(menu).not.toHaveClass("open");
+
+    await user.click(hamburger);
+    expect(menu).toHaveClass("open");
 
     await user.click(darkModeToggle);
     expect(document.documentElement).toHaveAttribute("data-theme", "light");
+    expect(menu).not.toHaveClass("open");
   });
 });

@@ -1,6 +1,10 @@
 import type { Todo } from "@/types/tanstack";
 import type { ReactNode } from "react";
 
+export interface DarkModeToggleProps {
+  onToggleTheme: ()=> void;
+}
+
 export interface NavMenuProps {
   onLinkClick: () => void;
   open: boolean;

@@ -39,7 +39,7 @@ nav {
   transform: translateY(-10px);
   pointer-events: none;
 
-  transition: transform 0.25s ease, opacity 0.25s ease;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 
   z-index: 1000; /* 🔥 ensures it overlays properly */
 }
@@ -78,9 +78,7 @@ nav {
 .hamburger {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  width: 4rem;
-  height: 2.5rem;
+  gap: .6rem;
   background: none;
   border: none;
   cursor: pointer;
@@ -89,15 +87,16 @@ nav {
 
 .bar {
   height: 0.4rem;
+  width: 3rem;
   background-color: var(--navbar-text);
   border-radius: 0.2rem;
-  transition: all 0.5s ease;
+  transition: all 0.5s ease-in;
 }
 
 /* animated X */
 
 .openHamburger .bar:nth-child(1) {
-  transform: rotate(45deg) translate(6px, 6px);
+      transform: translateY(.8rem) rotate(45deg);
 }
 
 .openHamburger .bar:nth-child(2) {
@@ -105,7 +104,7 @@ nav {
 }
 
 .openHamburger .bar:nth-child(3) {
-  transform: rotate(-45deg) translate(0.8rem, -0.8rem);
+  transform: translateY(-1.2rem) rotate(-45deg);
 }
 
 /* ---------- DARK MODE BUTTON ---------- */

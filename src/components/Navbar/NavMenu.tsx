@@ -25,7 +25,7 @@ const NavMenu = ({ onLinkClick, open }: NavMenuProps) => {
           </NavLink>
         </li>
         <li>
-          <DarkModeToggle />
+          <DarkModeToggle onToggleTheme={onLinkClick}/>
         </li>
       </ul>
     </div>

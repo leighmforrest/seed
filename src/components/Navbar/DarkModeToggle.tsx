@@ -2,6 +2,8 @@ import { useState } from "react";
 import { type Theme } from "@/types/theme";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 
+import type { DarkModeToggleProps } from "@/types";
+
 import styles from "./styles.module.css";
 
 const getInitialTheme = (): Theme => {
@@ -9,7 +11,7 @@ const getInitialTheme = (): Theme => {
   return saved === "dark" ? "dark" : "light";
 };
 
-const DarkModeToggle = () => {
+const DarkModeToggle = ({ onToggleTheme }: DarkModeToggleProps) => {
   const initialTheme = getInitialTheme();
   document.documentElement.setAttribute("data-theme", initialTheme);
 
@@ -21,6 +23,7 @@ const DarkModeToggle = () => {
 
     document.documentElement.setAttribute("data-theme", next);
     localStorage.setItem("theme", next);
+    onToggleTheme()
   };
 
   return (
