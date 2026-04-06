@@ -1,80 +1,23 @@
 import { http, HttpResponse } from "msw";
 import { BASE_URL } from "@/settings";
+import { todoFactory } from "../factories";
 
 export const handlers = [
-  http.get(`${BASE_URL}/todos`, () =>
-    HttpResponse.json([
-      {
-        userId: 1,
-        id: 1,
-        title: "delectus aut autem",
-        completed: false,
-      },
-      {
-        userId: 1,
-        id: 2,
-        title: "quis ut nam facilis et officia qui",
-        completed: false,
-      },
-      {
-        userId: 1,
-        id: 3,
-        title: "fugiat veniam minus",
-        completed: false,
-      },
-      {
-        userId: 1,
-        id: 4,
-        title: "et porro tempora",
-        completed: true,
-      },
-      {
-        userId: 1,
-        id: 5,
-        title:
-          "laboriosam mollitia et enim quasi adipisci quia provident illum",
-        completed: false,
-      },
-      {
-        userId: 1,
-        id: 6,
-        title: "qui ullam ratione quibusdam voluptatem quia omnis",
-        completed: false,
-      },
-      {
-        userId: 1,
-        id: 7,
-        title: "illo expedita consequatur quia in",
-        completed: false,
-      },
-      {
-        userId: 1,
-        id: 8,
-        title: "quo adipisci enim quam ut ab",
-        completed: true,
-      },
-      {
-        userId: 1,
-        id: 9,
-        title: "molestiae perspiciatis ipsa",
-        completed: false,
-      },
-      {
-        userId: 1,
-        id: 10,
-        title: "JEKK JEKK JEKK",
-        completed: false,
-      },
-    ]),
-  ),
-  http.get(`${BASE_URL}/todos/:todoId`, ({ params }) => {
+  http.get(`${BASE_URL}/todos`, async () => {
+    const todos = await todoFactory.buildList(10);
+
+    return HttpResponse.json(todos);
+  }),
+  http.get(`${BASE_URL}/todos/:todoId`, async ({ params }) => {
     const { todoId } = params;
 
-    HttpResponse.json({
-      userId: 1,
-      id: todoId,
-      title: "delectus aut autem",
-      completed: false,
-    });
+    const todo = await todoFactory
+      .props({
+        id: () => Number(todoId),
+        completed: () => Boolean(false),
+      })
+      .build();
+
+    return HttpResponse.json(todo);
   }),
 ];
