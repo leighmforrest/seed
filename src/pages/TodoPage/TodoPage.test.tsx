@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import { http, HttpResponse } from "msw";
 
 import { server } from "../../../tests/__mocks__/server";
+import { todoFactory } from "../../../tests/factories";
 import { Wrapper } from "../../../tests/wrappers";
 
 import { BASE_URL } from "@/settings";
@@ -54,15 +55,15 @@ describe("TodoPage", () => {
 
   it("shows the completed icon if completed", async () => {
     server.use(
-      http.get(`${BASE_URL}/todos/:todoId`, ({ params }) => {
+      http.get(`${BASE_URL}/todos/:todoId`,async ({ params }) => {
         const { todoId } = params;
 
-        return HttpResponse.json({
-          userId: 1,
-          id: todoId,
-          title: "delectus aut autem",
-          completed: true,
-        });
+        const todo = await todoFactory.props({
+          id: ()=> Number(todoId),
+          completed: ()=> Boolean(true)
+        }).build()
+
+        return HttpResponse.json(todo);
       }),
     );
 
