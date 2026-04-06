@@ -75,3 +75,11 @@ npm run test:coverage # run the tests with a console and html coverage report
         - BASE_URL: The base url of the accessed API.
         - PROJECT_NAME: The name that appears in the navbar brand.
     **Note:** Values are sourced from a `.env` file in the project root and must be prefixed `VITE_API_` (e.g. `VITE_API_BASE_URL`).
+- tests/:
+    - __mocks__: files for various mocks. Currently holds two files:
+        - handlers.ts: MSW handlers
+        - server.ts: MSW server
+    - factories.ts: Mock data factory file.
+    - helpers.tsx: functions that assist with testing. Contains one component: `LocationDisplay`. This component displays the current location of the app, and must be wrapped in a `MemoryRouter`.
+    - setup.ts: sets up the testing. It clears local storage, resets MSW server, cleans up RTL mounted components, and extends all of the RTL matchers.
+    - wrappers.tsx: Wraps the component or hook with `QueryClientProvider` and `MemoryRouter`. It also include the `LocationDisplay` component.
